@@ -8,3 +8,7 @@ exports.getAllRecipes = async (category) => {
   const recipes = await Recipe.find(filter).sort({ createdAt: -1 });
   return recipes;
 };
+exports.getRecipeById = async (id) => {
+  const recipe = await Recipe.findById(id);
+  return recipe;
+};

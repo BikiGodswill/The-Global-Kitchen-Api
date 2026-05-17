@@ -15,3 +15,23 @@ exports.getRecipes = async (req, res, next) => {
     next(error);
   }
 };
+exports.getRecipe = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const recipe = await recipeService.getRecipeById(id);
+    if (!recipe) {
+      return res.status(404).json({
+        success: false,
+        message: `No recipe found with id ${id}`,
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      data: recipe,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
