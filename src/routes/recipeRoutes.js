@@ -3,5 +3,9 @@ const router = express.Router();
 const recipe = require("../controllers/recipeControllers");
 
 router.route("/").get(recipe.getRecipes).post(recipe.createRecipe);
-router.route("/:id").get(recipe.getRecipe).patch(recipe.updateRecipe);
+router
+  .route("/:id")
+  .get(recipe.getRecipe)
+  .patch(recipe.updateRecipe)
+  .delete(recipe.deleteRecipe);
 module.exports = router;
