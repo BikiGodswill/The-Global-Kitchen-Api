@@ -22,7 +22,7 @@ exports.createRecipe = async (recipeData) => {
     category,
   } = recipeData;
 
-  // Business rule: cooking time must be a positive finite number
+  //cooking time must be a positive finite number
   if (!Number.isFinite(Number(cookingTime)) || Number(cookingTime) <= 0) {
     const error = new Error("Cooking time must be a positive number");
     error.statusCode = 400;
@@ -39,4 +39,30 @@ exports.createRecipe = async (recipeData) => {
   });
 
   return newRecipe;
+};
+exports.updateRecipe = async (id, updateData) => {
+  // Prevent clients from overwriting the _id field
+  delete updateData._id;
+
+  // If cookingTime is being updated, enforce the positive-number rule
+  if (updateData.cookingTime !== undefined) {
+    const time = Number(updateData.cookingTime);
+    if (!Number.isFinite(time) || time <= 0) {
+      const error = new Error("Cooking time must be a positive number");
+      error.statusCode = 400;
+      throw error;
+    }
+    updateData.cookingTime = time;
+  }
+
+  const updatedRecipe = await Recipe.findByIdAndUpdate(
+    id,
+    { $set: updateData },
+    {
+      new: true, // Return the document after the update
+      runValidators: true, // Re-run schema validators on the changed fields
+    },
+  );
+
+  return updatedRecipe;
 };
