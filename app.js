@@ -4,7 +4,7 @@ const express = require("express");
 const connectDB = require("./src/config/db");
 const PORT = process.env.PORT || 3000;
 const app = express();
-
+app.use(express.json());
 app.use("/api/recipes", recipeRoutes);
 async function startServer() {
   await connectDB();
