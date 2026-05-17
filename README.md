@@ -1,6 +1,6 @@
 # The Global Kitchen API 
  
- 
+# This Repo is for BIKI GOD'S WILL No one should clone it 
 ## Tech Stack - **Runtime:** Node Version - **Framework:**  - **Database:**  - **Configuration:** 
  
 ## Features 
