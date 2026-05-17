@@ -1,6 +1,6 @@
 # The Global Kitchen API 
  
-# This Repo is for BIKI GOD'S WILL No one should clone it 
+# This Repo is for BIKI GOD'S WILL any other repo with a different gmail was cloned
 ## Tech Stack - **Runtime:** Node Version - **Framework:**  - **Database:**  - **Configuration:** 
  
 ## Features 
